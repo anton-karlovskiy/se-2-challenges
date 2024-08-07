@@ -31,7 +31,7 @@ contract Staker {
 	}
 
 	// @notice Modifier to check if external contract 'ExampleExternalContract' has been completed or not
-	modifier externalContractNotCompleted() {
+	modifier notCompleted() {
 		require(
 			exampleExternalContract.completed() == false,
 			"ExampleExternalContract is completed"
@@ -57,7 +57,7 @@ contract Staker {
 
 	// @notice After some `deadline` allow anyone to call an `execute()` function
 	// @notice If the deadline has passed and the threshold is met, it should call `exampleExternalContract.complete{value: address(this).balance}()`
-	function execute() public deadlineMet externalContractNotCompleted {
+	function execute() public deadlineMet notCompleted {
 		require(!executeCalled, "Contract has been executed");
 		if (totalBalance > threshold) {
 			exampleExternalContract.complete{ value: address(this).balance }();
