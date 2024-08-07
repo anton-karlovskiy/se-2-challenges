@@ -243,3 +243,7 @@ Run the `yarn verify --network your_network` command to verify your contracts on
 > 🏃 Head to your next challenge [here](https://speedrunethereum.com).
 
 > 💬 Problems, questions, comments on the stack? Post them to the [🏗 scaffold-eth developers chat](https://t.me/joinchat/F7nCRK3kI93PoCOk)
+
+## TODOs
+
+- TODO: #1 revert `execute` function when it has not reached the threshold and update the relevant test accordingly as it costs gas for nothing now
