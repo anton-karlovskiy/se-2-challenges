@@ -247,3 +247,4 @@ Run the `yarn verify --network your_network` command to verify your contracts on
 ## TODOs
 
 - TODO: #1 revert `execute` function when it has not reached the threshold and update the relevant test accordingly as it costs gas for nothing now
+- TODO: #2 users cannot `withdraw` during stake period

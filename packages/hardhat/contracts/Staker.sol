@@ -1,4 +1,5 @@
 // RE: inspired by https://github.com/Astronaut828/SpeedRunEthereum/blob/main/Challenge1/Staker.sol
+// RE: https://github.com/edakturk14/speed-run-ethereum?tab=readme-ov-file#-challenge-1--decentralized-staking-app
 
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4; // Do not change the solidity version as it negativly impacts submission grading
@@ -67,6 +68,7 @@ contract Staker {
 	}
 
 	// @notice `threshold` was not met, allow everyone to call a `withdraw()` function to withdraw their balance
+    // TODO: #2
 	function withdraw() public thresholdNotMet {
 		uint256 tempBalance = balances[msg.sender];
 		require(tempBalance > 0, "No balance to withdraw");
