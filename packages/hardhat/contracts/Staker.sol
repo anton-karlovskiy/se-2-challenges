@@ -1,7 +1,7 @@
 // RE: inspired by https://github.com/Astronaut828/SpeedRunEthereum/blob/main/Challenge1/Staker.sol
 
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.26; //Do not change the solidity version as it negativly impacts submission grading
+pragma solidity 0.8.4; // Do not change the solidity version as it negativly impacts submission grading
 
 import "hardhat/console.sol";
 import "./ExampleExternalContract.sol";
@@ -30,8 +30,8 @@ contract Staker {
 		_;
 	}
 
-	// @notice Checks if external contract 'ExampleExternalContract' has been completed or not
-	modifier contractCompleted() {
+	// @notice Modifier to check if external contract 'ExampleExternalContract' has been completed or not
+	modifier externalContractNotCompleted() {
 		require(
 			exampleExternalContract.completed() == false,
 			"ExampleExternalContract is completed"
@@ -57,7 +57,7 @@ contract Staker {
 
 	// @notice After some `deadline` allow anyone to call an `execute()` function
 	// @notice If the deadline has passed and the threshold is met, it should call `exampleExternalContract.complete{value: address(this).balance}()`
-	function execute() public deadlineMet contractCompleted {
+	function execute() public deadlineMet externalContractNotCompleted {
 		require(!executeCalled, "Contract has been executed");
 		if (totalBalance > threshold) {
 			exampleExternalContract.complete{ value: address(this).balance }();
